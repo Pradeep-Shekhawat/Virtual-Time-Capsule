@@ -1,0 +1,445 @@
+/* Color variables and resets */
+:root {
+  --primary: #6d28d9;
+  --primary-light: #7c3aed;
+  --secondary: #18181b;
+  --light: #f5f5f5;
+  --retro-green: #00FF41;
+  --retro-green-muted: rgba(0, 255, 65, 0.8);
+  --error: #ef4444;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic body styling with background overlay */
+body {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  line-height: 1.6;
+  background-color: var(--secondary);
+  color: var(--light);
+  overflow-x: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.3) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.3;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header styles */
+header {
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  animation: slideIn 1s ease-out;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--retro-green);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #a1a1aa;
+}
+
+/* Nav styles */
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--retro-green);
+  text-decoration: underline;
+}
+
+/* Main layout */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Section titles */
+.section-title {
+  color: var(--retro-green);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Capsule form */
+.capsule-form {
+  flex: 1 1 600px;
+  background-color: #27272a;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 1s ease-out;
+}
+
+.capsule-form::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--retro-green), var(--primary-light), var(--retro-green));
+  animation: scan 3s linear infinite;
+}
+
+/* Scan animation */
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Fade in & slide in animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Inputs, textarea, and select */
+input, textarea, select, .date-picker {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #3f3f46;
+  border-radius: 4px;
+  background-color: #18181b;
+  color: var(--light);
+  font-family: 'Space Mono', 'Courier New', monospace;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus, select:focus, .date-picker:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.3);
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Capsule type radio buttons */
+.capsule-type {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.capsule-type input[type="radio"] {
+  display: none;
+}
+
+.capsule-type label {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #3f3f46;
+  border-radius: 4px;
+  flex: 1;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.capsule-type input[type="radio"]:checked + label {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn.btn-full {
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+/* Gallery section */
+.gallery {
+  flex: 1 1 300px;
+}
+
+.gallery-container {
+  background-color: #27272a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--retro-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-select {
+  flex: 1;
+}
+
+.capsules-list {
+  list-style: none;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.capsules-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.capsules-list::-webkit-scrollbar-track {
+  background: #18181b;
+  border-radius: 4px;
+}
+
+.capsules-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.capsule-item {
+  background-color: #18181b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-left: 3px solid var(--retro-green);
+}
+
+.capsule-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.capsule-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--retro-green);
+}
+
+.capsule-meta {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  margin-bottom: 0.5rem;
+}
+
+.capsule-preview {
+  margin-top: 1rem;
+  color: #d4d4d8;
+  font-style: italic;
+  border-top: 1px dashed #3f3f46;
+  padding-top: 0.5rem;
+}
+
+.loading, .no-capsules {
+  text-align: center;
+  padding: 2rem;
+  color: #a1a1aa;
+}
+
+/* Success message styling */
+#successMessage {
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--retro-green);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+}
+
+/* File upload button wrapper */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-upload {
+  border: 1px solid #3f3f46;
+  color: var(--light);
+  background-color: #18181b;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.btn-upload:hover {
+  background-color: #27272a;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--retro-green-muted);
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 1px solid #3f3f46;
+  color: #a1a1aa;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--retro-green);
+  text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+  
+  .capsule-form, .gallery {
+    flex: 1 1 100%;
+  }
+  
+  .capsule-type {
+    flex-direction: column;
+  }
+  
+  .upload-btn-wrapper {
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-upload {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 2rem;
+  }
+}

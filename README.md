@@ -22,18 +22,12 @@ MySQL (running locally or on a server)
 Nodemailer SMTP credentials (for email confirmations)
 
 2️⃣ Clone the Repository
-sh
-Copy
-Edit
 git clone https://github.com/yourusername/virtual-time-capsule.git
 cd virtual-time-capsule
 
 3️⃣ Setup MySQL Database
 Create a new MySQL database and import the provided SQL schema.
 
-sql
-Copy
-Edit
 CREATE DATABASE time_capsule_db;
 USE time_capsule_db;
 
@@ -60,17 +54,12 @@ CREATE TABLE access_tokens (
 
 4️⃣ Backend Setup
 Install dependencies
-sh
-Copy
-Edit
 cd backend
 npm install
+
 Configure environment variables
 Create a .env file in the backend folder:
 
-sh
-Copy
-Edit
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
@@ -80,23 +69,16 @@ DB_NAME=time_capsule_db
 EMAIL_SERVICE=gmail
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-email-password
+
 Start the backend
-sh
-Copy
-Edit
 npm start
 
 5️⃣ Frontend Setup
 Install dependencies
-sh
-Copy
-Edit
 cd ../frontend
 npm install
+
 Start the frontend
-sh
-Copy
-Edit
 npm start
 
 📌 API Endpoints
@@ -104,8 +86,6 @@ Create Capsule
 POST /api/capsules
 
 json
-Copy
-Edit
 {
   "capsuleType": "private",
   "capsuleName": "My Future Self",
@@ -118,8 +98,6 @@ Open Capsule
 POST /api/capsules/open
 
 json
-Copy
-Edit
 {
   "email": "user@example.com",
   "password": "secure123"
